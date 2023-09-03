@@ -9,8 +9,7 @@
 ###
 
 - **library that provides cryptographic functions and algorithms, including
-  encryption, decryption, hashing, and digital signature generation and
-  verification**
+  encryption, decryption, hashing, and digital signature generation**
 
 ## project structure:
 
@@ -27,7 +26,6 @@
 │   └── hashing.go
 ├── key_management
 │   └── key_management.go
-├── main.go
 ├── primitives
 │   └── primitives.go
 ├── random
