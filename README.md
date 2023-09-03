@@ -15,7 +15,24 @@
 ## project structure:
 
 ```
-
+.
+├── decrypt
+│   └── decrypt.go
+├── digital_signatures
+│   └── digital_signatures.go
+├── encrypt
+│   └── encrypt.go
+├── go.mod
+├── hashing
+│   └── hashing.go
+├── key_management
+│   └── key_management.go
+├── main.go
+├── primitives
+│   └── primitives.go
+├── random
+│   └── random.go
+└── README.md
 ```
 
 ## installation
