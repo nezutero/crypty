@@ -3,17 +3,18 @@ package decrypt
 import (
 	"crypto/aes"
 	"crypto/cipher"
+	"crypto/des"
 	"fmt"
 )
 
-func decryptAES(key []byte, ciphertext []byte) ([]byte, error) {
+func DecryptAES(key []byte, ciphertext []byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		return nil, err
 	}
 
 	if len(ciphertext) < aes.BlockSize {
-		return nil, fmt.Errorf("[ERROR] ciphertext is too short")
+		return nil, fmt.Errorf("ciphertext is too short")
 	}
 	iv := ciphertext[:aes.BlockSize]
 	ciphertext = ciphertext[aes.BlockSize:]
@@ -22,4 +23,24 @@ func decryptAES(key []byte, ciphertext []byte) ([]byte, error) {
 	mode.CryptBlocks(ciphertext, ciphertext)
 
 	return ciphertext, nil
+}
+
+func DecryptDES(key []byte, ciphertext []byte) ([]byte, error) {
+	block, err := des.NewCipher(key)
+	if err != nil {
+		return nil, err
+	}
+
+	blockSize := block.BlockSize()
+	if len(ciphertext)%blockSize != 0 {
+		return nil, fmt.Errorf("ciphertext is not a multiple of the block size")
+	}
+
+	plaintext := make([]byte, len(ciphertext))
+
+	for i := 0; i < len(ciphertext); i += blockSize {
+		block.Decrypt(plaintext[i:i+blockSize], ciphertext[i:i+blockSize])
+	}
+
+	return plaintext, nil
 }
