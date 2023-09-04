@@ -46,3 +46,26 @@ func EncryptDES(key []byte, plaintext []byte) ([]byte, error) {
 
 	return ciphertext, nil
 }
+
+func Encrypt3DES(key []byte, plaintext []byte) ([]byte, error) {
+	if len(key) != 24 {
+		return nil, fmt.Errorf("3DES key must be 24 bytes")
+	}
+
+	block, err := des.NewTripleDESCipher(key)
+	if err != nil {
+		return nil, err
+	}
+
+	blockSize := block.BlockSize()
+	if len(plaintext)%blockSize != 0 {
+		return nil, fmt.Errorf("plaintext is not a multiple of the block size")
+	}
+
+	ciphertext := make([]byte, len(plaintext))
+
+	mode := cipher.NewCBCEncrypter(block, key[:blockSize])
+	mode.CryptBlocks(ciphertext, plaintext)
+
+	return ciphertext, nil
+}

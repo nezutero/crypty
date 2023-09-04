@@ -44,3 +44,22 @@ func DecryptDES(key []byte, ciphertext []byte) ([]byte, error) {
 
 	return plaintext, nil
 }
+
+func Decrypt3DES(key []byte, ciphertext []byte) ([]byte, error) {
+	block, err := des.NewTripleDESCipher(key)
+	if err != nil {
+		return nil, err
+	}
+
+	blockSize := block.BlockSize()
+	if len(ciphertext)%blockSize != 0 {
+		return nil, fmt.Errorf("ciphertext is not a multiple of the block size")
+	}
+
+	plaintext := make([]byte, len(ciphertext))
+
+	mode := cipher.NewCBCDecrypter(block, ciphertext[:blockSize])
+	mode.CryptBlocks(plaintext, ciphertext[blockSize:])
+
+	return plaintext, nil
+}
