@@ -1,4 +1,4 @@
-<h2 align="center">crypty - golang cryptography library</h2>
+<h3 align="center">crypty - golang cryptography library</h3>
 
 ###
 
@@ -34,8 +34,6 @@
 ```
 
 ## installation
-
-- use go get:
 
 ```
 go get github.com/kenjitheman/crypty
