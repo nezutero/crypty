@@ -39,6 +39,12 @@ func CalculateSHA512(data []byte) []byte {
 	return hasher.Sum(nil)
 }
 
+func CalculateSHA384(data []byte) []byte {
+	hasher := sha512.New384()
+	hasher.Write(data)
+	return hasher.Sum(nil)
+}
+
 func CalculateSHA224(data []byte) []byte {
 	hasher := sha256.New()
 	hasher.Write(data)
