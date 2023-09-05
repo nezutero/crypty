@@ -31,3 +31,9 @@ func CalculateMD5(data []byte) []byte {
 	hasher.Write(data)
 	return hasher.Sum(nil)
 }
+
+func CalculateSHA512(data []byte) []byte {
+	hasher := sha512.New()
+	hasher.Write(data)
+	return hasher.Sum(nil)
+}
