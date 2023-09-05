@@ -1,6 +1,7 @@
 package hashing
 
 import (
+	"crypto/md5"
 	"crypto/sha1"
 	"crypto/sha256"
 
@@ -21,6 +22,12 @@ func CalculateSHA3_256(data []byte) []byte {
 
 func CalculateSHA1(data []byte) []byte {
 	hasher := sha1.New()
+	hasher.Write(data)
+	return hasher.Sum(nil)
+}
+
+func CalculateMD5(data []byte) []byte {
+	hasher := md5.New()
 	hasher.Write(data)
 	return hasher.Sum(nil)
 }
