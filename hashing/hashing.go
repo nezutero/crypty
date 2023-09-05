@@ -49,7 +49,6 @@ func CalculateSHA224(data []byte) []byte {
 	hasher := sha256.New()
 	hasher.Write(data)
 	sha256Hash := hasher.Sum(nil)
-
 	sha224Hash := sha256Hash[:28]
 	return sha224Hash
 }
