@@ -4,6 +4,7 @@ import (
 	"crypto/md5"
 	"crypto/sha1"
 	"crypto/sha256"
+	"crypto/sha512"
 
 	"golang.org/x/crypto/sha3"
 )
@@ -36,4 +37,13 @@ func CalculateSHA512(data []byte) []byte {
 	hasher := sha512.New()
 	hasher.Write(data)
 	return hasher.Sum(nil)
+}
+
+func CalculateSHA224(data []byte) []byte {
+	hasher := sha256.New()
+	hasher.Write(data)
+	sha256Hash := hasher.Sum(nil)
+
+	sha224Hash := sha256Hash[:28]
+	return sha224Hash
 }
