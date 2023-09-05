@@ -8,8 +8,25 @@
 
 ###
 
-- **library that provides cryptographic functions and algorithms, including
-  encryption, decryption, hashing, and digital signature generation**
+## features/functionality
+
+#### library that provides cryptographic functions and algorithms, including encryption, decryption, hashing, and digital signature generation
+  
+- **encryption/decryption**:
+
+	- `aes`
+	- `des`
+	- `3des`
+
+- **hashing**:
+
+    - `sha-512`
+	- `sha-256`
+    - `sha-384`
+    - `sha-224`
+	- `sha-3`
+	- `sha-1`
+    - `md-5`
 
 ## project structure:
 
