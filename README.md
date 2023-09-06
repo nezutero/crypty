@@ -11,7 +11,7 @@
 ## features/functionality
 
 - **library that provides cryptographic functions and algorithms, 
-including encryption, decryption, hashing, and digital signature generation**
+including encryption, decryption, hashing, and digital signatures, generation**
   
 - **encryption/decryption**:
 	- `aes`
@@ -26,6 +26,10 @@ including encryption, decryption, hashing, and digital signature generation**
 	- `sha-3`
 	- `sha-1`
     - `md-5`
+
+- **randomization**:
+    - `hex generation`
+    - `bytes generation`
 
 ## project structure:
 
