@@ -11,7 +11,7 @@
 ## features/functionality
 
 - **library that provides cryptographic functions and algorithms, 
-including encryption, decryption, hashing, and digital signature generation**
+including encryption, decryption, hashing, and digital signatures, generation**
   
 - **encryption/decryption**:
 	- `aes`
@@ -27,6 +27,13 @@ including encryption, decryption, hashing, and digital signature generation**
 	- `sha-1`
     - `md-5`
 
+- **randomization**:
+    - `hex generation`
+    - `bytes generation`
+
+- **digital_signatures**:
+    - `GenerateRSAKeyPair`
+
 ## project structure:
 
 ```
@@ -38,12 +45,11 @@ including encryption, decryption, hashing, and digital signature generation**
 ├── encrypt
 │   └── encrypt.go
 ├── go.mod
+├── go.sum
 ├── hashing
 │   └── hashing.go
 ├── key_management
 │   └── key_management.go
-├── primitives
-│   └── primitives.go
 ├── random
 │   └── random.go
 └── README.md
