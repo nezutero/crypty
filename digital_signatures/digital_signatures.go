@@ -1,8 +1,10 @@
 package digital_signatures
 
 import (
+	"crypto"
 	"crypto/rand"
 	"crypto/rsa"
+	"crypto/sha256"
 )
 
 func GenerateRSAKeyPair(bits int) (*rsa.PrivateKey, *rsa.PublicKey, error) {
@@ -12,4 +14,13 @@ func GenerateRSAKeyPair(bits int) (*rsa.PrivateKey, *rsa.PublicKey, error) {
 	}
 	publicKey := &privateKey.PublicKey
 	return privateKey, publicKey, nil
+}
+
+func SignDataWithRSA(data []byte, privateKey *rsa.PrivateKey) ([]byte, error) {
+	hashed := sha256.Sum256(data)
+	signature, err := rsa.SignPKCS1v15(rand.Reader, privateKey, crypto.SHA256, hashed[:])
+	if err != nil {
+		return nil, err
+	}
+	return signature, nil
 }
