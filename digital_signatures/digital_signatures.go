@@ -7,6 +7,7 @@ import (
 	"crypto/sha256"
 	"crypto/x509"
 	"encoding/pem"
+	"errors"
 )
 
 func GenerateRSAKeyPair(bits int) (*rsa.PrivateKey, *rsa.PublicKey, error) {
@@ -55,4 +56,16 @@ func ExportRSAPublicKeyToPEM(publicKey *rsa.PublicKey) (string, error) {
 		Bytes: publicKeyBytes,
 	}
 	return string(pem.EncodeToMemory(pemBlock)), nil
+}
+
+func ImportRSAPrivateKeyFromPEM(keyPEM string) (*rsa.PrivateKey, error) {
+	pemBlock, _ := pem.Decode([]byte(keyPEM))
+	if pemBlock == nil {
+		return nil, errors.New("invalid PEM block")
+	}
+	privateKey, err := x509.ParsePKCS1PrivateKey(pemBlock.Bytes)
+	if err != nil {
+		return nil, err
+	}
+	return privateKey, nil
 }
