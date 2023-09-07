@@ -44,3 +44,15 @@ func ExportRSAPrivateKeyToPEM(privateKey *rsa.PrivateKey) (string, error) {
 	}
 	return string(pem.EncodeToMemory(pemBlock)), nil
 }
+
+func ExportRSAPublicKeyToPEM(publicKey *rsa.PublicKey) (string, error) {
+	publicKeyBytes, err := x509.MarshalPKIXPublicKey(publicKey)
+	if err != nil {
+		return "", err
+	}
+	pemBlock := &pem.Block{
+		Type:  "PUBLIC KEY",
+		Bytes: publicKeyBytes,
+	}
+	return string(pem.EncodeToMemory(pemBlock)), nil
+}
