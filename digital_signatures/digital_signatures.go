@@ -24,3 +24,12 @@ func SignDataWithRSA(data []byte, privateKey *rsa.PrivateKey) ([]byte, error) {
 	}
 	return signature, nil
 }
+
+func VerifySignatureWithRSA(data, signature []byte, publicKey *rsa.PublicKey) error {
+	hashed := sha256.Sum256(data)
+	err := rsa.VerifyPKCS1v15(publicKey, crypto.SHA256, hashed[:], signature)
+	if err != nil {
+		return err
+	}
+	return nil
+}
