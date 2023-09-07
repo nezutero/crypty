@@ -31,6 +31,9 @@ including encryption, decryption, hashing, and digital signatures, generation**
     - `hex generation`
     - `bytes generation`
 
+- **digital_signatures**:
+    - `GenerateRSAKeyPair`
+
 ## project structure:
 
 ```
@@ -42,12 +45,11 @@ including encryption, decryption, hashing, and digital signatures, generation**
 ├── encrypt
 │   └── encrypt.go
 ├── go.mod
+├── go.sum
 ├── hashing
 │   └── hashing.go
 ├── key_management
 │   └── key_management.go
-├── primitives
-│   └── primitives.go
 ├── random
 │   └── random.go
 └── README.md
