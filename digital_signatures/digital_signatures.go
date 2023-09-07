@@ -5,6 +5,8 @@ import (
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha256"
+	"crypto/x509"
+	"encoding/pem"
 )
 
 func GenerateRSAKeyPair(bits int) (*rsa.PrivateKey, *rsa.PublicKey, error) {
@@ -32,4 +34,13 @@ func VerifySignatureWithRSA(data, signature []byte, publicKey *rsa.PublicKey) er
 		return err
 	}
 	return nil
+}
+
+func ExportRSAPrivateKeyToPEM(privateKey *rsa.PrivateKey) (string, error) {
+	privateKeyBytes := x509.MarshalPKCS1PrivateKey(privateKey)
+	pemBlock := &pem.Block{
+		Type:  "RSA PRIVATE KEY",
+		Bytes: privateKeyBytes,
+	}
+	return string(pem.EncodeToMemory(pemBlock)), nil
 }
