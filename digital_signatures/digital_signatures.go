@@ -69,3 +69,19 @@ func ImportRSAPrivateKeyFromPEM(keyPEM string) (*rsa.PrivateKey, error) {
 	}
 	return privateKey, nil
 }
+
+func ImportRSAPublicKeyFromPEM(keyPEM string) (*rsa.PublicKey, error) {
+	pemBlock, _ := pem.Decode([]byte(keyPEM))
+	if pemBlock == nil {
+		return nil, errors.New("invalid PEM block")
+	}
+	publicKey, err := x509.ParsePKIXPublicKey(pemBlock.Bytes)
+	if err != nil {
+		return nil, err
+	}
+	rsaPublicKey, ok := publicKey.(*rsa.PublicKey)
+	if !ok {
+		return nil, errors.New("not an RSA public key")
+	}
+	return rsaPublicKey, nil
+}
