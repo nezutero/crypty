@@ -121,7 +121,7 @@ including encryption, decryption, hashing, and digital signatures, generation**
  
 ## project structure:
 
-```
+```go
 .
 ├── decrypt
 │   └── decrypt.go
@@ -140,7 +140,7 @@ including encryption, decryption, hashing, and digital signatures, generation**
 
 ## installation
 
-```
+```shell
 go get github.com/kenjitheman/crypty
 ```
 
