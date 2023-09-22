@@ -1,4 +1,4 @@
-<h3 align="center">crypty - golang cryptography library</h3>
+## golang cryptography library 
 
 ###
 
