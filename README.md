@@ -1,4 +1,4 @@
-## golang cryptography library 
+## Golang cryptography library 
 
 ###
 
@@ -8,121 +8,122 @@
 
 ###
 
-## features/functionality
+## Features/Functionality
 
-- **library that provides cryptographic functions and algorithms, 
+- **Library that provides cryptographic functions and algorithms, 
 including encryption, decryption, hashing, and digital signatures, generation**
   
-- **encryption**:
+- **Encryption**:
   
 	- **EncryptAES(key []byte, plaintext []byte) ([]byte, error)**
    
-	    - encrypts the provided plaintext using the AES encryption algorithm
-	    - utilizes AES in CBC mode with a random initialization vector (IV)
+	    - Encrypts the provided plaintext using the AES encryption algorithm.
+	    - Utilizes AES in CBC mode with a random initialization vector (IV).
        
 	- **EncryptDES(key []byte, plaintext []byte) ([]byte, error)**
    
-		- encrypts the provided plaintext using the DES encryption algorithm
-		- supports DES encryption for data blocks of the correct size
+		- Encrypts the provided plaintext using the DES encryption algorithm.
+		- Supports DES encryption for data blocks of the correct size.
     
 	- **Encrypt3DES(key []byte, plaintext []byte) ([]byte, error**)
    
-	    - encrypts the provided plaintext using the 3DES (Triple DES) encryption algorithm
-	    - requires a 24-byte (192-bit) key
+	    - Encrypts the provided plaintext using the 3DES (Triple DES) encryption algorithm.
+	    - Requires a 24-byte (192-bit) key.
 
-- **decryption**:
+- **Decryption**:
   
 	- **DecryptAES(key []byte, ciphertext []byte) ([]byte, error)**
    
-		- decrypts AES-encrypted ciphertext using the provided key
+		- Decrypts AES-encrypted ciphertext using the provided key.
     
 	- **DecryptDES(key []byte, ciphertext []byte) ([]byte, error)**
    
-		- decrypts DES-encrypted ciphertext using the provided key
+		- Decrypts DES-encrypted ciphertext using the provided key.
     
 	- **Decrypt3DES(key []byte, ciphertext []byte) ([]byte, error)**
    
-		- decrypts 3DES (Triple DES)-encrypted ciphertext using the provided key
+		- Decrypts 3DES (Triple DES)-encrypted ciphertext using the provided key.
 
-- **hashing**:
+- **Hashing**:
   
 	- **CalculateSHA256(data []byte) []byte**
    
-		- calculates the SHA-256 hash of the input data
+		- Calculates the SHA-256 hash of the input data.
     
 	- **CalculateSHA224(data []byte) []byte**
    
-		- calculates the SHA-224 hash of the input data
+		- Calculates the SHA-224 hash of the input data.
     
 	- **CalculateSHA3_256(data []byte) []byte**
    
-		- calculates the SHA3-256 hash of the input data
+		- Calculates the SHA3-256 hash of the input data.
     
 	- **CalculateSHA1(data []byte) []byte**
    
-		- calculates the SHA-1 hash of the input data
+		- Calculates the SHA-1 hash of the input data.
     
 	- **CalculateMD5(data []byte) []byte**
    
-		- calculates the MD5 hash of the input data
+		- Valculates the MD5 hash of the input data.
     
 	- **CalculateSHA512(data []byte) []byte**
    
-		- calculates the SHA-512 hash of the input data
+		- Valculates the SHA-512 hash of the input data.
     
 	- **CalculateSHA384(data []byte) []byte**
    
-		- calculates the SHA-384 hash of the input data
+		- Calculates the SHA-384 hash of the input data.
 
-- **randomization**:
+- **Randomization**:
   
     - **GenerateRandomBytes(length int) ([]byte, error)**
       
-		- generates a specified number of random bytes
-		- uses the crypto/rand package for secure random byte generation
+		- Generates a specified number of random bytes.
+		- Uses the crypto/rand package for secure random byte generation.
 
 	- **GenerateRandomHex(length int) (string, error)**
    
-		- generates a random hexadecimal string of the specified length
-		- utilizes GenerateRandomBytes internally and encodes the result in hexadecimal
+		- Generates a random hexadecimal string of the specified length.
+		- Utilizes GenerateRandomBytes internally and encodes the result in hexadecimal.
 
-- **digital_signatures**:
+- **Digital signatures**:
 
 	- **GenerateRSAKeyPair(bits int) (*rsa.PrivateKey, *rsa.PublicKey, error)****
  
-	    - generates an RSA key pair for digital signatures with the specified number of bits
-	    - returns a private key and its corresponding public key
+	    - Generates an RSA key pair for digital signatures with the specified number of bits.
+	    - Returns a private key and its corresponding public key.
        
 	- **SignDataWithRSA(data []byte, privateKey *rsa.PrivateKey) ([]byte, error)***
    
-		- signs a byte array of data using an RSA private key
-		- uses the PKCS1v15 signature scheme with SHA-256 hash
+		- Signs a byte array of data using an RSA private key.
+		- Uses the PKCS1v15 signature scheme with SHA-256 hash.
     
 	- **VerifySignatureWithRSA(data, signature []byte, publicKey *rsa.PublicKey) error***
    
-	    - verifies a digital signature using an RSA public key
-	    - validates the signature against the data using the PKCS1v15 signature scheme and SHA-256 hash
+	    - Verifies a digital signature using an RSA public key.
+	    - Validates the signature against the data using the PKCS1v15 signature scheme and SHA-256 hash.
        
 	- **ExportRSAPrivateKeyToPEM(privateKey *rsa.PrivateKey) (string, error)***
    
-		- exports an RSA private key to a PEM-encoded string
+		- Exports an RSA private key to a PEM-encoded string.
     
 	 - **ExportRSAPublicKeyToPEM(publicKey *rsa.PublicKey) (string, error)***
     
-		- exports an RSA public key to a PEM-encoded string
+		- Exports an RSA public key to a PEM-encoded string.
     
 	 - **ImportRSAPrivateKeyFromPEM(keyPEM string) (*rsa.PrivateKey, error)***
     
-		- imports an RSA private key from a PEM-encoded string
+		- Imports an RSA private key from a PEM-encoded string.
     
 	- **ImportRSAPublicKeyFromPEM(keyPEM string) (*rsa.PublicKey, error)***
    
-		- imports an RSA public key from a PEM-encoded string
+		- Imports an RSA public key from a PEM-encoded string.
  
-## project structure:
+## Project structure:
 
 ```go
-.
+crypty
+│
 ├── decrypt
 │   └── decrypt.go
 ├── digital_signatures
@@ -138,17 +139,18 @@ including encryption, decryption, hashing, and digital signatures, generation**
 └── README.md
 ```
 
-## installation
+## Installation
 
-```shell
+```sh
 go get github.com/kenjitheman/crypty
 ```
 
-## contributing
+## Contributing
 
-- pull requests are welcome, for major changes, please open an issue first to
-  discuss what you would like to change
+- Pull requests are welcome, for major changes, please open an issue first to
+  discuss what you would like to change.
 
-## license
+## License
 
 - [MIT](https://choosealicense.com/licenses/mit/)
+
