@@ -140,7 +140,7 @@ including encryption, decryption, hashing, and digital signatures, generation**
 
 ## Installation
 
-```shell
+```sh
 go get github.com/kenjitheman/crypty
 ```
 
