@@ -122,7 +122,8 @@ including encryption, decryption, hashing, and digital signatures, generation**
 ## Project structure:
 
 ```go
-.
+crypty
+│
 ├── decrypt
 │   └── decrypt.go
 ├── digital_signatures
