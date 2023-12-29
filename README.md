@@ -142,7 +142,7 @@ crypty
 ## Installation
 
 ```sh
-go get github.com/kenjitheman/crypty
+go get github.com/nezutero/crypty
 ```
 
 ## Contributing
@@ -152,5 +152,4 @@ go get github.com/kenjitheman/crypty
 
 ## License
 
-- [MIT](https://choosealicense.com/licenses/mit/)
-
+- [MIT](./LICENSE)
